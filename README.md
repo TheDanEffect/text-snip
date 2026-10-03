@@ -5,6 +5,25 @@
 Press **Ctrl + Alt + T**, drag a box over the text, then press **Ctrl + V** anywhere to paste it.
 Like the Windows Snipping Tool, but for text.
 
+> [!IMPORTANT]
+> **Install Tesseract, or text-snip will read your text badly.**
+>
+> Tesseract is what actually reads the text, and it is a separate install:
+>
+> ```
+> winget install -e --id UB-Mannheim.TesseractOCR
+> ```
+>
+> Without it the tool still starts and still copies text, but it falls back to the reader
+> built into Windows, which is built for sentences and runs a dictionary over its guesses.
+> On ordinary writing that is fine. On code it is not: `plt` comes back as `pit`, `0` as `e`,
+> and **parts of a line are dropped with no warning** — in testing, `i % 2 == 0` came back as
+> nothing at all.
+>
+> Nothing on screen tells you this is happening, and a wrong snip looks exactly like a right
+> one. So if you intend to grab code, install Tesseract first. Full numbers are in
+> [How well it reads](#how-well-it-reads).
+
 - The screen freezes and dims so you can grab text from a moving video
 - **Indentation and columns come back the way they looked**, so code, bullet lists and
   tables paste in the right shape instead of collapsing into one flat block
